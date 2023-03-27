@@ -1,5 +1,6 @@
 package pl.edu.pg.eti.rsww.template.inbound.http.dto.mapper;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -9,10 +10,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import pl.edu.pg.eti.rsww.template.inbound.http.dto.Error;
 import pl.edu.pg.eti.rsww.template.logic.exception.ValidationException;
 
+@Slf4j
 @ControllerAdvice
-public class HttpExceptionMappers {
-
-    private static final Logger LOG = LoggerFactory.getLogger(HttpExceptionMappers.class);
+public class HttpExceptionMapper {
 
     @ExceptionHandler
     public ResponseEntity<Error> handleException(Exception exception) {
@@ -20,7 +20,7 @@ public class HttpExceptionMappers {
         if (exception instanceof ValidationException) {
             errorEntity = createResponse(exception, HttpStatus.BAD_REQUEST);
         } else {
-            LOG.error("Unhandled exception: ", exception);
+            log.error("Unhandled exception: ", exception);
             errorEntity = createResponse(exception, HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return errorEntity;
