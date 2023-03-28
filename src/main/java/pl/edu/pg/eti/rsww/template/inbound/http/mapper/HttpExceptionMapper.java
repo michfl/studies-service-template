@@ -1,8 +1,6 @@
-package pl.edu.pg.eti.rsww.template.inbound.http.dto.mapper;
+package pl.edu.pg.eti.rsww.template.inbound.http.mapper;
 
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

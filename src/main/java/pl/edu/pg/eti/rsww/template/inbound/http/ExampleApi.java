@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import pl.edu.pg.eti.rsww.template.inbound.http.dto.ExampleResponse;
 import pl.edu.pg.eti.rsww.template.inbound.http.dto.PutExampleRequest;
-import pl.edu.pg.eti.rsww.template.inbound.http.dto.mapper.DomainToDtoMapper;
-import pl.edu.pg.eti.rsww.template.inbound.http.dto.mapper.DtoToDomainMapper;
+import pl.edu.pg.eti.rsww.template.inbound.http.mapper.DomainToDtoMapper;
+import pl.edu.pg.eti.rsww.template.inbound.http.mapper.DtoToDomainMapper;
 import pl.edu.pg.eti.rsww.template.logic.example.ExampleService;
 
 import java.util.List;

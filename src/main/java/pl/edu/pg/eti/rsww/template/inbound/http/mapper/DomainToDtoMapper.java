@@ -1,4 +1,4 @@
-package pl.edu.pg.eti.rsww.template.inbound.http.dto.mapper;
+package pl.edu.pg.eti.rsww.template.inbound.http.mapper;
 
 import org.springframework.stereotype.Component;
 import pl.edu.pg.eti.rsww.template.inbound.http.dto.ExampleResponse;
@@ -10,7 +10,7 @@ import java.util.List;
 public class DomainToDtoMapper {
 
     public ExampleResponse mapGetExampleResponse(Example example) {
-        return new ExampleResponse(example.id(), example.text());
+        return new ExampleResponse(example.getId(), example.getText());
     }
 
     public List<ExampleResponse> mapGetExamplesResponse(List<Example> examples) {

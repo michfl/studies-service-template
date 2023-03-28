@@ -23,7 +23,7 @@ Run the default Spring Boot configuration or start the application from Gradle o
 #### PostgreSQL
 
 This project requires a Postgres DB. To be able to run it locally, 
-use the following command to run the Postgres in Docker:
+use the following command to run Postgres in Docker:
 ```
 docker run -e POSTGRES_PASSWORD=password -p 5432:5432 --name template-db -d postgres:15
 docker start template-db
@@ -32,7 +32,7 @@ Credentials are postgres:password.
 
 #### RabbitMQ
 
-To run RabbitMQ locally in Docker use the following commands:
+To run RabbitMQ locally in Docker use the following command:
 ```
 docker run -d -p 5672:5672 -p 15672:15672 --name my-rabbit rabbitmq:3-management
 ```
@@ -52,6 +52,15 @@ You can also run a selected profile from console using the command below:
 ```
 ./gradlew bootRun --args='--spring.profiles.active=dev'
 ```
+
+### Docker
+
+You can use Jib to containerize this application. Run this command to build to your local Docker daemon:
+```
+./gradlew jibDockerBuild
+```
+Check official [Jib quickstart guide](https://github.com/GoogleContainerTools/jib/tree/master/jib-gradle-plugin#quickstart)
+for any additional configuration options.
 
 ### Reference Documentation
 

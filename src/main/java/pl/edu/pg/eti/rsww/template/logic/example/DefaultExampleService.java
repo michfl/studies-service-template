@@ -24,7 +24,7 @@ public class DefaultExampleService implements ExampleService {
     public void create(Example example) {
         validate(example);
         var exampleEntity = ExampleEntity.builder()
-                .text(example.text())
+                .text(example.getText())
                 .build();
         exampleRepository.save(exampleEntity);
     }
@@ -34,7 +34,10 @@ public class DefaultExampleService implements ExampleService {
         var exampleEntity = exampleRepository.findById(id);
         if (exampleEntity.isPresent()) {
             var entity = exampleEntity.get();
-            return Optional.of(new Example(entity.getId(), entity.getText()));
+            return Optional.of(Example.builder()
+                    .id(entity.getId())
+                    .text(entity.getText())
+                    .build());
         } else {
             return Optional.empty();
         }
@@ -43,12 +46,15 @@ public class DefaultExampleService implements ExampleService {
     @Override
     public List<Example> getAll() {
         return exampleRepository.findAll().stream()
-                .map(entity -> new Example(entity.getId(), entity.getText()))
+                .map(entity -> Example.builder()
+                        .id(entity.getId())
+                        .text(entity.getText())
+                        .build())
                 .toList();
     }
 
     private void validate(Example example) {
-        if (example.text().length() > 100) {
+        if (example.getText().length() > 100) {
             throw new TextToLongException();
         }
     }
